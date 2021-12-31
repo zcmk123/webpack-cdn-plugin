@@ -1,4 +1,4 @@
-# webpack-cdn-plugin
+# webpack-upload-cdn-plugin
 
 fork 过来修改了几个问题
 1、create-react-app 下路径替换错误问题
@@ -27,10 +27,10 @@ Upload your webpack-generated assets to CDN, allowing renaming/rehashing.
 ## Installation
 
 ```
-npm install -D webpack-cdn-plugin
+npm install -D webpack-upload-cdn-plugin
 
 # or
-yarn add --dev webpack-cdn-plugin
+yarn add --dev webpack-upload-cdn-plugin
 ```
 
 ## Demo
@@ -42,7 +42,7 @@ yarn add --dev webpack-cdn-plugin
 ## Usage
 
 ```js
-const WebpackCDNPlugin = require('webpack4-cdn-plugin')
+const WebpackCDNPlugin = require('webpack-upload-cdn-plugin')
 
 module.exports = {
   // ... other fields
