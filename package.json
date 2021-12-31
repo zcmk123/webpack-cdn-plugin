@@ -4,8 +4,18 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "description": "Upload your webpack-generated assets to CDN, allowing renaming/rehashing.",
-  "keywords": ["webpack", "webpack4", "CDN", "upload", "rename"],
-  "files": ["build", "types", "index.js"],
+  "keywords": [
+    "webpack",
+    "webpack4",
+    "CDN",
+    "upload",
+    "rename"
+  ],
+  "files": [
+    "build",
+    "types",
+    "index.js"
+  ],
   "repository": "git+https://github.com/zcmk123/webpack-upload-cdn-plugin.git",
   "author": "wemlion <angusfu1126@qq.com>",
   "license": "MIT",
@@ -50,13 +60,15 @@
     }
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "scripts": {
     "commit": "npx git-cz",
     "release": "npm run build && npx standard-version",
     "format": "pretty-quick --pattern \"**/*.*(ts|js)\"",
     "clean": "rm -rf build types",
-    "build": "npm run clean && tsc"
+    "build": "tsc"
   }
 }

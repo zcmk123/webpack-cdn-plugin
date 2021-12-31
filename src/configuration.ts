@@ -30,11 +30,12 @@ export const defaults: Omit<Required<Configuration>, 'uploadContent'> = {
   keepLocalFiles: false,
   keepSourcemaps: false,
   backupHTMLFiles: false,
-  manifestFilename: false
+  manifestFilename: false,
+  errorOnUploadFail: false
 }
 
 /** merge user configuration with defaults */
-export const standardize = function (
+export const standardize = function(
   config: Configuration
 ): Required<Configuration> {
   assert(

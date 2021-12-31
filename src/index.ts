@@ -32,7 +32,7 @@ export default class Webpack4CDNPlugin {
 
   private assetsMap = new Map()
   private assetMapJSON = '{}'
-  public pluginName = 'webpack4-cdn-plugin'
+  public pluginName = 'webpack-upload-cdn-plugin'
 
   constructor(config: Configuration) {
     this.config = standardize(config)
@@ -46,7 +46,7 @@ export default class Webpack4CDNPlugin {
       console.log(
         chalk.yellow(
           chalk.black.bgYellow('[Warning]') +
-            ' webpack4-cdn-plugin only works under ' +
+            ' webpack-upload-cdn-plugin only works under ' +
             chalk.black.bgYellow('production') +
             ' mode.'
         )
@@ -212,7 +212,7 @@ export default class Webpack4CDNPlugin {
     const rePublicPath = RegExp(`^${publicPath}`) // ('' or '/')
     const reIgnorePath = /^(?:(https?:)?\/\/)|(?:data:)/
     const reImport = /(?:<(?:link|script|img)[^>]+(?:src|href)\s*=\s*)(['"]?)([^'"\s>]+)\1/g
-    const replaceImports = function (source: string) {
+    const replaceImports = function(source: string) {
       return source.replace(
         reImport,
         (match: string, _: string, path: string) => {
@@ -234,7 +234,7 @@ export default class Webpack4CDNPlugin {
     const replaceHTML = (html: string) => {
       return posthtml<any, string>([
         // replace possible inline manifest
-        function (tree) {
+        function(tree) {
           tree.match({ tag: 'script' }, node => {
             const { attrs } = node
 
