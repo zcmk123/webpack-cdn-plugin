@@ -1,21 +1,11 @@
 {
-  "name": "webpack4-cdn-plugin",
-  "version": "2.0.0-alpha.0",
+  "name": "webpack-cdn-plugin",
+  "version": "2.0.1",
   "main": "index.js",
   "types": "types/index.d.ts",
   "description": "Upload your webpack-generated assets to CDN, allowing renaming/rehashing.",
-  "keywords": [
-    "webpack",
-    "webpack4",
-    "CDN",
-    "upload",
-    "rename"
-  ],
-  "files": [
-    "build",
-    "types",
-    "index.js"
-  ],
+  "keywords": ["webpack", "webpack4", "CDN", "upload", "rename"],
+  "files": ["build", "types", "index.js"],
   "repository": "git+https://github.com/AngusFu/webpack4-cdn-plugin.git",
   "author": "wemlion <angusfu1126@qq.com>",
   "license": "MIT",
@@ -60,9 +50,7 @@
     }
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": ["@commitlint/config-conventional"]
   },
   "scripts": {
     "commit": "npx git-cz",

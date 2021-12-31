@@ -1,4 +1,8 @@
-# webpack4-cdn-plugin
+# webpack-cdn-plugin
+
+fork 过来修改了几个问题
+1、create-react-app 下路径替换错误问题
+2、支持在文件上传失败时中断打包流程
 
 [![npm status](https://img.shields.io/npm/v/webpack4-cdn-plugin.svg)](https://www.npmjs.org/package/webpack4-cdn-plugin)
 
@@ -23,10 +27,10 @@ Upload your webpack-generated assets to CDN, allowing renaming/rehashing.
 ## Installation
 
 ```
-npm install -D webpack4-cdn-plugin
+npm install -D webpack-cdn-plugin
 
 # or
-yarn add --dev webpack4-cdn-plugin
+yarn add --dev webpack-cdn-plugin
 ```
 
 ## Demo
@@ -57,6 +61,8 @@ if (process.env.NODE_ENV === 'production') {
     backupHTMLFiles: true,
     // manifest file name (`String | false`)
     manifestFilename: 'manifest.json',
+
+    errorOnUploadFail: false,
 
     // a function, which returns `Promise<url>`
     // you can do your compressing works with content

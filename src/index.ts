@@ -159,18 +159,24 @@ export default class Webpack4CDNPlugin {
       )
     })
 
-    // 1. static assets like js/fonts/images
-    await Promise.all(staticAssets.map(uploadFile))
+    try {
+      // 1. static assets like js/fonts/images
+      await Promise.all(staticAssets.map(uploadFile))
 
-    // 2. replace CSS `url()`s, then upload them
-    this.interpolateCSSAssets(cssFilenames, compilation)
-    await Promise.all(cssFilenames.map(uploadFile))
+      // 2. replace CSS `url()`s, then upload them
+      this.interpolateCSSAssets(cssFilenames, compilation)
+      await Promise.all(cssFilenames.map(uploadFile))
 
-    // DO NOT move this line!!!
-    this.assetMapJSON = mapToJSON(assetsMap)
+      // DO NOT move this line!!!
+      this.assetMapJSON = mapToJSON(assetsMap)
 
-    // upload entry chunk files
-    await Promise.all(entryPoints.map(uploadFile))
+      // upload entry chunk files
+      await Promise.all(entryPoints.map(uploadFile))
+    } catch (error) {
+      if (this.config.errorOnUploadFail) {
+        return callback(new Error(error as string))
+      }
+    }
 
     // now that all files (except html / source map) are uploaded,
     // we can replace these urls within html files
@@ -206,7 +212,7 @@ export default class Webpack4CDNPlugin {
     const rePublicPath = RegExp(`^${publicPath}`) // ('' or '/')
     const reIgnorePath = /^(?:(https?:)?\/\/)|(?:data:)/
     const reImport = /(?:<(?:link|script|img)[^>]+(?:src|href)\s*=\s*)(['"]?)([^'"\s>]+)\1/g
-    const replaceImports = function(source: string) {
+    const replaceImports = function (source: string) {
       return source.replace(
         reImport,
         (match: string, _: string, path: string) => {
@@ -228,7 +234,7 @@ export default class Webpack4CDNPlugin {
     const replaceHTML = (html: string) => {
       return posthtml<any, string>([
         // replace possible inline manifest
-        function(tree) {
+        function (tree) {
           tree.match({ tag: 'script' }, node => {
             const { attrs } = node
 
@@ -368,7 +374,11 @@ export default class Webpack4CDNPlugin {
       )
       console.log(chalk.red(e.toString()))
 
-      return file
+      if (this.config.errorOnUploadFail) {
+        throw e
+      } else {
+        return file
+      }
     }
   }
 

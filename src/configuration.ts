@@ -21,6 +21,8 @@ export interface Configuration {
    * not need this file.
    */
   manifestFilename?: string | boolean
+  /** emit error on upload fail */
+  errorOnUploadFail?: boolean
 }
 
 /** default configuration */
@@ -32,7 +34,7 @@ export const defaults: Omit<Required<Configuration>, 'uploadContent'> = {
 }
 
 /** merge user configuration with defaults */
-export const standardize = function(
+export const standardize = function (
   config: Configuration
 ): Required<Configuration> {
   assert(

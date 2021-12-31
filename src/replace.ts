@@ -16,7 +16,7 @@ export function replacePublicPath(source: string) {
   const reAssign = /__webpack_require__\.p\s*\=\s*["']/g
 
   // assume that `__webpack_require__.p + ...` is always in a single line
-  const reBinaryExpr = /__webpack_require__\.p\s*\+\s*([^;\n]*?)[;\n]/g
+  const reBinaryExpr = /\(?__webpack_require__\.p\s*\+\s*([^;\n]*?)\)?[;\n]/g
 
   while (true) {
     const res = reAssign.exec(source)
