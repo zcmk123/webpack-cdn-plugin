@@ -6,7 +6,7 @@ fork 过来修改了几个问题
 
 2、增加errorOnUploadFail属性，支持在文件上传失败时中断打包流程
 
-[![npm status](https://img.shields.io/npm/v/webpack4-cdn-plugin.svg)](https://www.npmjs.org/package/webpack4-cdn-plugin)
+[![npm status](https://img.shields.io/npm/v/webpack4-cdn-plugin.svg)](https://www.npmjs.org/package/webpack-upload-cdn-plugin)
 
 Upload your webpack-generated assets to CDN, allowing renaming/rehashing.
 
